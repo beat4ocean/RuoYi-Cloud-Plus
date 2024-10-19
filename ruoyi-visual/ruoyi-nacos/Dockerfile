@@ -5,7 +5,7 @@ FROM bellsoft/liberica-openjdk-debian:17.0.11-cds
 
 LABEL maintainer="Lion Li"
 
-RUN mkdir -p /ruoyi/nacos
+RUN mkdir -p /ruoyi/nacos /root/nacos/conf
 
 WORKDIR /ruoyi/nacos
 
@@ -15,5 +15,6 @@ ENV TZ=Asia/Shanghai LANG=C.UTF-8 LC_ALL=C.UTF-8 JAVA_OPTS="-Xms512m -Xmx1024m"
 
 ADD ./target/ruoyi-nacos.jar ./app.jar
 
-ENTRYPOINT java -Djava.security.egd=file:/dev/./urandom ${JAVA_OPTS} -jar app.jar
+# 修改可手动指定参数
+#ENTRYPOINT java -Djava.security.egd=file:/dev/./urandom ${JAVA_OPTS} -jar app.jar
 
